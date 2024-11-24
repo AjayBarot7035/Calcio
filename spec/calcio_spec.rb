@@ -1,4 +1,5 @@
 require 'rspec'
+require './lib/calcio'
 
 describe Calcio do
 	describe '.add' do
