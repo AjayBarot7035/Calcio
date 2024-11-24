@@ -3,7 +3,7 @@
 Initial thoughts
 - Read the instuctions
 - TODO: Don't forget the extra points link below the kata page
-- Do I have to validate the input?(to avoid rubbish/bada data input)
+- Do I have to validate the input?(to avoid rubbish/bad data input)
 - String to integer manipulation we have to do for the input
 - Avoid original input manipulation
 - Need to benchmark the solution
