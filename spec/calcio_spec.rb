@@ -32,19 +32,38 @@ describe Calcio do
     end
 
 		context 'when the input has new line delimiters between numbers' do
-		end
+      it 'returns the sum of all numbers' do
+        expect(described_class.add("1\n2,3,4")).to eq(10)
+      end
+    end
 
 		context 'when a custom delimiter is specified' do
-		end
+      it 'returns the sum of all numbers using the custom delimiter' do
+        expect(described_class.add("//;\n1;2;5")).to eq(8)
+      end
+      
+      it 'returns the sum of all numbers using a different custom delimiter' do
+        expect(described_class.add("//|\n2|3|4|2")).to eq(11)
+      end
+    end
 
 		context 'when a custom delimiter, comma, newline specified' do
-		end
+      it 'returns the sum of all numbers with returns the sum of all numbers' do 
+        expect(described_class.add("//;\n1;2,5")).to eq(8)
+      end
+    end
 
 		context 'when input has negative numbers' do
-		end
+      it 'raises an exception with a message' do
+        expect { described_class.add("1,-2,3") }.to raise_error("Negative numbers not allowed: -2")
+      end
+    end
 
 		context 'when user entered wrong input' do
-		end
+      it 'ignore the wrong input' do
+        expect(described_class.add("1,*2,3")).to eq(4)
+      end
+    end
 
 		context 'when user entered big input' do
 		end
