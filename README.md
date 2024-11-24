@@ -79,4 +79,4 @@ PS: Just out of the curisity I tried to explore the parslet gem but getting wors
 8. If we have complex calculation then move that calculation into service object
 9. Add the comment so we can have proper rdoc
 10. Create the requirement file with all the details
-11. Try [parslet gem]:https://github.com/kschiess/parslet instead of regex if it works without rails :(
+11. Try [parslet gem](https://github.com/kschiess/parslet) instead of regex if it works without rails :(
