@@ -3,6 +3,8 @@ require './lib/calcio'
 
 describe Calcio do
   describe '.add' do
+    let(:big_input) { Set.new(1..100000).join(',') }
+
     context 'when the input is an empty string' do
       it 'returns 0' do
         expect(described_class.add('')).to eq(0)
@@ -64,8 +66,11 @@ describe Calcio do
         expect(described_class.add("1,*2,3")).to eq(4)
       end
     end
-
-		context 'when user entered big input' do
-		end
+    
+    context 'when user entered big input' do
+      it 'returns 5000050000' do
+        expect(described_class.add(big_input)).to eq(5000050000)
+      end
+    end
 	end
 end
