@@ -9,7 +9,7 @@ Instructions for local setup are given below:
 
 1. Clone the repository
 ```
-https://github.com/AjayBarot7035/Calcio.git
+git clone https://github.com/AjayBarot7035/Calcio.git
 ```
 
 2. Enter the project directory
