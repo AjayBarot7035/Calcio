@@ -1,3 +1,5 @@
+require 'benchmark'
+
 class Calcio
   #
   #@param input [String] [input data]
@@ -60,3 +62,13 @@ class Calcio
     [sum, negatives]
   end
 end
+
+# Benchmark.bmbm do |x|
+#   x.report("Calcio Performance") {Calcio.add(Set.new(1..100000).join(','))}
+# end
+# Rehearsal ------------------------------------------------------
+# Calcio Performance   0.092679   0.005942   0.098621 (  0.098829)
+# --------------------------------------------- total: 0.098621sec
+
+#                          user     system      total        real
+# Calcio Performance   0.083583   0.003335   0.086918 (  0.087018)
