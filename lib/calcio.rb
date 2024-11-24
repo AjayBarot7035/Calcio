@@ -5,7 +5,7 @@ class Calcio
   #@param input [String] [input data]
   #
   def self.add(input)
-    numbers, delimiter = extract_numbers_and_delimiter(input)
+    numbers = extract_numbers_and_delimiter(input)
 
     return 0 if numbers.all? { |a| a.strip.empty? }
 
@@ -30,7 +30,7 @@ class Calcio
       delimiter = /[,\n]/
       numbers = input.split(delimiter)
     end
-    [numbers, delimiter]
+    numbers
   end
 
   #
@@ -53,6 +53,7 @@ class Calcio
 
     numbers.each do |num|
       number = num.to_i
+      next if number > 1000
       if number < 0
         negatives << number
       else

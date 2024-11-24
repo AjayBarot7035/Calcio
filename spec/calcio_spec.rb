@@ -68,8 +68,15 @@ describe Calcio do
     end
     
     context 'when user entered big input' do
-      it 'returns 5000050000' do
-        expect(described_class.add(big_input)).to eq(5000050000)
+      it 'returns 500500' do
+        expect(described_class.add(big_input)).to eq(500500)
+      end
+    end
+
+    context 'extra edge case scenarios' do
+      it 'returns 6' do
+        expect(described_class.add("//[***]\n1***2***3")).to eq(6)
+        expect(described_class.add("//[*][%]\n1*2%3")).to eq(6)
       end
     end
 	end
