@@ -47,11 +47,12 @@ Calcio
     when user entered wrong input
       ignore the wrong input
     when user entered big input
-      returns 5000050000
+      returns 500500
+    extra edge case scenarios
+      returns 6
 
-Finished in 0.15891 seconds (files took 0.15433 seconds to load)
-12 examples, 0 failures
-
+Finished in 0.11504 seconds (files took 0.50531 seconds to load)
+13 examples, 0 failures
 ```
 ## 🕐 Benchmarking
 Below are the result and output of benchmaring for big input 
