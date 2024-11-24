@@ -7,16 +7,29 @@ describe Calcio do
       it 'returns 0' do
         expect(described_class.add('')).to eq(0)
       end
+      
+      it 'returns 0 even the input has space issue' do
+        expect(described_class.add(' ,  , ')).to eq(0)
+      end
 		end
 
 		context 'when the input is a single digit' do
-		end
-
-		context 'when the input is two numbers separated by a comma' do
-		end
-
-		context 'when the input is more than two numbers separated by a comma' do
-		end
+      it 'returns 1' do
+        expect(described_class.add('1')).to eq(1)
+      end
+    end
+    
+    context 'when the input is two numbers separated by a comma' do
+      it 'returns the sum of the numbers' do
+        expect(described_class.add('2,5')).to eq(7)
+      end
+    end
+    
+    context 'when the input is more than two numbers separated by a comma' do
+      it 'returns the sum of the numbers' do
+        expect(described_class.add('2,3,5,6')).to eq(16)
+      end
+    end
 
 		context 'when the input has new line delimiters between numbers' do
 		end
