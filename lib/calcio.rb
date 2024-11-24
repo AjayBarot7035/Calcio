@@ -16,6 +16,9 @@ class Calcio
 
   private
 
+  #
+  #@param input [String] [original input data]
+  #
   def self.extract_numbers_and_delimiter(input)
     if input.start_with?("//")
       delimiter_section, number_section = input.split("\n", 2)
@@ -28,6 +31,9 @@ class Calcio
     [numbers, delimiter]
   end
 
+  #
+  #@param delimiter [Array] [delimiter data]
+  #
   def self.parse_delimiter(delimiter)
     if delimiter.start_with?("[") && delimiter.end_with?("]")
       delimiter[1..-2].split("][").map { |d| Regexp.escape(d) }.join("|")
@@ -36,6 +42,9 @@ class Calcio
     end
   end
 
+  #
+  #@param numbers [Array] [numbers data integer, float, negatives, etc]
+  #
   def self.filter_sum_and_negatives(numbers)
     sum = 0
     negatives = []
