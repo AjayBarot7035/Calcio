@@ -1,9 +1,12 @@
 require 'rspec'
 require './lib/calcio'
 
-RSpec.describe Calcio do
-	describe '.add' do
-		context 'when the input is an empty string' do
+describe Calcio do
+  describe '.add' do
+    context 'when the input is an empty string' do
+      it 'returns 0' do
+        expect(described_class.add('')).to eq(0)
+      end
 		end
 
 		context 'when the input is a single digit' do
