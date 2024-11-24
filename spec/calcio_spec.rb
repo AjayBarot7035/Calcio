@@ -1,7 +1,7 @@
 require 'rspec'
 require './lib/calcio'
 
-describe Calcio do
+RSpec.describe Calcio do
 	describe '.add' do
 		context 'when the input is an empty string' do
 		end
