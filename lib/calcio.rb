@@ -1,19 +1,20 @@
 require 'benchmark'
+require 'pry'
 
 class Calcio
   #
   #@param input [String] [input data]
   #
   def self.add(input)
-    numbers = extract_numbers_and_delimiter(input)
+    multiplication, sum, negatives = extract_numbers_and_delimiter(input)
 
-    return 0 if numbers.all? { |a| a.strip.empty? }
+    # return 0 if numbers.all? { |a| a.strip.empty? }
 
-    sum, negatives = filter_sum_and_negatives(numbers)
+    # sum, negatives = filter_sum_and_negatives(numbers)
 
     raise "Negative numbers not allowed: #{negatives.join(', ')}" unless negatives.empty?
 
-    sum
+    multiplication || sum
   end
 
   private
@@ -22,15 +23,23 @@ class Calcio
   #@param input [String] [original input data]
   #
   def self.extract_numbers_and_delimiter(input)
-    if input.start_with?("//")
+    multiplication = nil
+    if input.start_with?("//") && input.include?('*')
       delimiter_section, number_section = input.split("\n", 2)
       delimiter = parse_delimiter(delimiter_section[2..])
       numbers = number_section.split(Regexp.new(delimiter + "|[,\n]"))
+      multiplication, negatives = filter_multiplication_and_negatives(numbers)
+    elsif input.start_with?("//")
+      delimiter_section, number_section = input.split("\n", 2)
+      delimiter = parse_delimiter(delimiter_section[2..])
+      numbers = number_section.split(Regexp.new(delimiter + "|[,\n]"))
+      sum, negatives = filter_sum_and_negatives(numbers)
     else
       delimiter = /[,\n]/
       numbers = input.split(delimiter)
+      sum, negatives = filter_sum_and_negatives(numbers)
     end
-    numbers
+    [multiplication, sum, negatives]
   end
 
   #
@@ -61,6 +70,25 @@ class Calcio
       end
     end
     [sum, negatives]
+  end
+
+  # 
+  # @param numbers [Array] [numbers data integer, float, negatives, etc]
+  # 
+  def self.filter_multiplication_and_negatives(numbers)
+    multiplication = 1
+    negatives = []
+
+    numbers.each do |num|
+      number = num.to_i
+      next if number > 1000
+      if number < 0
+        negatives << number
+      else
+        multiplication *= number
+      end
+    end
+    [multiplication, negatives]
   end
 end
 
